@@ -1,0 +1,90 @@
+import {StyleSheet} from 'react-native';
+import colors from '../../../theme/colors';
+
+export const FlightCardStyles = StyleSheet.create({
+  container: {
+    height: 136,
+    borderRadius: 16,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+    backgroundColor: colors.white,
+    marginVertical: 12,
+    marginHorizontal: 24,
+  },
+  topSectionContainer: {
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  topLeftContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  totalDurationTextStyle: {
+    fontFamily: 'Montserrat-Medium',
+    color: colors.greyOne,
+    fontSize: 8,
+    lineHeight: 14,
+    fontWeight: '500',
+  },
+  textStyleTitle: {
+    fontFamily: 'Montserrat-Medium',
+    color: colors.black,
+    fontSize: 10,
+    lineHeight: 14,
+    letterSpacing: 0.2,
+    fontWeight: '500',
+  },
+  centerContainer: {
+    padding: 12,
+    width: '80%',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  departureTime: {
+    fontFamily: 'Montserrat-SemiBold',
+    color: colors.black,
+    fontSize: 16,
+    lineHeight: 18,
+    letterSpacing: -0.32,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  airportCodeStyle: {
+    fontFamily: 'Montserrat-Regular',
+    color: colors.black,
+    fontSize: 12,
+    lineHeight: 14,
+    fontWeight: '400',
+    textAlign: 'center',
+  },
+  imageStyle: {
+    marginHorizontal: 13,
+  },
+  stopTextStyle: {
+    fontFamily: 'Montserrat-Medium',
+    color: colors.greyOne,
+    fontSize: 8,
+    fontWeight: '500',
+    textAlign: 'center',
+    padding: 4,
+  },
+  fareTextStyle: {
+    fontFamily: 'Montserrat-Medium',
+    color: colors.black,
+    fontSize: 13,
+    fontWeight: '500',
+    textAlign: 'center',
+    padding: 4,
+    alignSelf: 'center',
+    lineHeight: 14,
+  },
+});
