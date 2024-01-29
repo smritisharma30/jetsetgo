@@ -1,5 +1,5 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import {View, Text, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import FlightList from '../../components/organisms/FlightList/FlightList';
 import {useSelector} from 'react-redux';
 import {FlightScreenStyles} from './FlightScreenStyles';
@@ -20,6 +20,12 @@ const FlightsScreen = () => {
   const [flights, setFlights] = useState(data?.data?.result);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [showSortModal, setShowSortModal] = useState(false);
+
+  useEffect(() => {
+    if(data?.data?.result){
+        setFlights(data?.data?.result)
+    }
+  },[data])
 
   const onSortClick = (sortData: SortModalType) => {
     if (sortData?.label === 'Clear All') {
@@ -81,7 +87,8 @@ const FlightsScreen = () => {
         />
       </TouchableOpacity>
       <Header />
-      {data === null || data === undefined ? (
+      {data === undefined || data === null && <ActivityIndicator />}
+      {flights?.length === 0 ? (
         <Text style={FlightScreenStyles.noFlightsText}>There are no flights available</Text>
       ) : (
         <FlightList data={flights} />

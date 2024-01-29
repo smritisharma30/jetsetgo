@@ -1,5 +1,5 @@
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {fetchData} from '../../redux/store';
@@ -16,9 +16,14 @@ const HomeScreen: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [departureData, setDepartureData] = useState(AirportList[0]);
-  const [arrivalData, setArrivalData] = useState(AirportList[0]);
+  const [arrivalData, setArrivalData] = useState(AirportList[1]);
   const [showArrivalModal, setShowArrivalModal] = useState(false);
   const [showDepartureModal, setShowDepartureModal] = useState(false);
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    setShowError(departureData === arrivalData ? true : false);
+  }, [departureData, arrivalData]);
 
   const getFlightResults = () => {
     dispatch(fetchData());
@@ -85,7 +90,7 @@ const HomeScreen: React.FC = (): JSX.Element => {
         <TouchableOpacity
           style={HomeScreenStyles.buttonStyles}
           activeOpacity={0.5}
-          onPress={getFlightResults}>
+          onPress={() => {!showError && getFlightResults()}}>
           <Text style={HomeScreenStyles.searchTextStyle}>Search</Text>
         </TouchableOpacity>
       </View>
@@ -105,6 +110,12 @@ const HomeScreen: React.FC = (): JSX.Element => {
           setShowDepartureModal(false);
         }}
       />
+      {showError && (
+        <Text style={HomeScreenStyles.errorStyle}>
+          Departure and Arrival Cannot be same, please select some other
+          destination to proceed
+        </Text>
+      )}
     </View>
   );
 };

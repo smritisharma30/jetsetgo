@@ -53,5 +53,14 @@ export const HomeScreenStyles = StyleSheet.create({
   },
   departureContainer:{
     width: '48%'
-}
+},
+errorStyle: {
+    color: colors.error,
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 32,
+    marginHorizontal: 16,
+    textAlign: 'center'
+  }
 });

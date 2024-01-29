@@ -11,5 +11,6 @@ export  default  {
     blackOne: '#191919',
     grayTwo: '#F2E3E0',
     greyThree: '#999999b3',
-    greyFour: '#797777'
+    greyFour: '#797777',
+    error: '#FF0000'
 }
