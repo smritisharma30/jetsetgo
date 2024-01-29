@@ -6,15 +6,17 @@ import {
   Modal
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+
 import {FilterList} from '../../../theme/constants';
 import Icon from '../../atoms/Icon/Icon';
 import IconXml from '../../../../assets/IconXml';
 import { FilterModalStyles } from './FilterModalStyles';
+import { FilterModalItem, FilterModalProps } from './FilterModal.type';
 
-const FilterModal = (props) => {
+const FilterModal: React.FC<FilterModalProps> = (props: FilterModalProps): JSX.Element => {
   const {isVisible, onClose, onSelection} = props;
 
-  const FilterItem = item => {
+  const FilterItem =(item: FilterModalItem) => {
     return (
       <TouchableOpacity style={FilterModalStyles.AirportDetailsContainer} onPress={() => onSelection?.(item?.item)}>
         <Text style={FilterModalStyles.titleStyleOne}>

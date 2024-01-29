@@ -4,16 +4,11 @@ import IconXml from "../../assets/IconXml";
 
 export const getTabBarIcon = (routeName: string, focused: boolean) => {
     let iconName: string;
-    console.log("routeName",routeName)
-    console.log("focused", focused)
     switch (routeName) {
       case 'Home':
         iconName = focused ? IconXml.homeActiveIcon : IconXml.homeInactiveIcon;
         break;
-      case 'Flights':
-        iconName = focused ? IconXml.flightsActive : IconXml.flightsInactive
-        break;
-      case 'Offer':
+      case 'Offers':
         iconName = focused ? IconXml.offersActive : IconXml.offersInactive;
         break;
       case 'Profile':

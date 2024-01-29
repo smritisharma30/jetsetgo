@@ -9,17 +9,21 @@ import {useNavigation} from '@react-navigation/native';
 import {filterFlightsByAirline, sortObjectsByPrice} from './FlightScreenUtils';
 import FilterModal from '../../components/molecules/FilterModal/FilterModal';
 import SortModal from '../../components/molecules/SortModal/SortModal';
+import {SortModalType} from '../../components/molecules/SortModal/SortModal.type';
+import {FilterModalType} from '../../components/molecules/FilterModal/FilterModal.type';
+import {AppRoute} from '../../navigation/Navigation.type';
+import magicNumber from '../../theme/magicNumber';
 
 const FlightsScreen = () => {
   const navigation = useNavigation();
-  const {data} = useSelector(state => state);
+  const {data}: any = useSelector(state => state);
   const [flights, setFlights] = useState(data?.data?.result);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [showSortModal, setShowSortModal] = useState(false);
 
-  const onSortClick = sortData => {
+  const onSortClick = (sortData: SortModalType) => {
     if (sortData?.label === 'Clear All') {
-      setFlights('data?.data?.result');
+      setFlights(data?.data?.result);
     } else {
       const sortedData = sortObjectsByPrice(data?.data?.result);
       setFlights(sortedData);
@@ -27,7 +31,7 @@ const FlightsScreen = () => {
     setShowSortModal(false);
   };
 
-  const onFilterClick = airline => {
+  const onFilterClick = (airline: FilterModalType) => {
     if (airline?.airlineCode === 'CL') {
       setFlights(data?.data?.result);
     } else {
@@ -69,11 +73,19 @@ const FlightsScreen = () => {
     <View style={FlightScreenStyles.container}>
       <TouchableOpacity
         style={FlightScreenStyles.backButtonContainer}
-        onPress={() => navigation.navigate('Home')}>
-        <Icon svgXml={IconXml.backIcon} height={32} width={32} />
+        onPress={() => navigation.navigate(AppRoute.Home)}>
+        <Icon
+          svgXml={IconXml.backIcon}
+          height={magicNumber.backIconHeight}
+          width={magicNumber.backIconWidth}
+        />
       </TouchableOpacity>
       <Header />
-      <FlightList data={flights} />
+      {data === null || data === undefined ? (
+        <Text style={FlightScreenStyles.noFlightsText}>There are no flights available</Text>
+      ) : (
+        <FlightList data={flights} />
+      )}
       <FilterModal
         isVisible={showFilterModal}
         onClose={() => setShowFilterModal(false)}

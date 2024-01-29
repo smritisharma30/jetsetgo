@@ -1,5 +1,7 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { Dispatch } from '@reduxjs/toolkit/react';
 import axios from 'axios';
+import { FLIGHT_LIST_ENDPOINT } from '../theme/constants';
 
 const dataSlice = createSlice({
   name: 'data',
@@ -21,11 +23,11 @@ const dataSlice = createSlice({
 });
 
 
-export const fetchData = () => async (dispatch) => {
+export const fetchData = () => async (dispatch: Dispatch) => {
   try {
     dispatch(dataSlice.actions.fetchDataStart());
 
-    const response = await axios.get('https://api.npoint.io/4829d4ab0e96bfab50e7');
+    const response = await axios.get(FLIGHT_LIST_ENDPOINT);
     const data = response.data;
     dispatch(dataSlice.actions.fetchDataSuccess(data));
   } catch (error) {

@@ -10,11 +10,12 @@ import {FilterList, sortList} from '../../../theme/constants';
 import Icon from '../../atoms/Icon/Icon';
 import IconXml from '../../../../assets/IconXml';
 import { SortModalStyles } from './SortModalStyles';
+import { SortModalItem, SortModalProps, SortModalType } from './SortModal.type';
 
-const SortModal = (props) => {
+const SortModal: React.FC<SortModalProps> = (props: SortModalProps): JSX.Element => {
   const {isVisible, onClose, onSelection} = props;
 
-  const SortItem = item => {
+  const SortItem = (item: SortModalItem) => {
     return (
       <TouchableOpacity style={SortModalStyles.AirportDetailsContainer} onPress={() => onSelection?.(item?.item)}>
         <Text style={SortModalStyles.titleStyleOne}>

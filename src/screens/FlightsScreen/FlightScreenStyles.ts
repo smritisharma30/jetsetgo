@@ -29,5 +29,13 @@ export const FlightScreenStyles = StyleSheet.create({
   backButtonContainer:{
     marginHorizontal: 22,
     marginVertical: 12
+  },
+  noFlightsText:{
+    color: colors.orangeOne,
+    textAlign:'center',
+    fontFamily:'Montserrat-Medium',
+    fontSize: 32,
+    fontWeight: '500',
+    marginTop: '40%'
   }
 });

@@ -3,21 +3,20 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Modal,
-  StyleSheet,
-  Pressable,
+  Modal
 } from 'react-native';
-import {AirportModalType} from './AirportModal.type';
+
+import { AirportItemType, AirportModalType} from './AirportModal.type';
 import {AirportModalStyles} from './AirportModalStyles';
 import {FlatList} from 'react-native-gesture-handler';
 import {AirportList} from '../../../theme/constants';
 import Icon from '../../atoms/Icon/Icon';
 import IconXml from '../../../../assets/IconXml';
 
-const AirportModal = (props: AirportModalType) => {
+const AirportModal: React.FC<AirportModalType> = (props: AirportModalType): JSX.Element => {
   const {isVisible, onClose, onSelection} = props;
 
-  const AirportItem = item => {
+  const AirportItem =(item:AirportItemType) => {
     return (
       <TouchableOpacity style={AirportModalStyles.AirportDetailsContainer} onPress={() => onSelection?.(item?.item)}>
         <View style={AirportModalStyles.airportCodeStyle}>

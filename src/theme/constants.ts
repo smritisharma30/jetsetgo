@@ -1,3 +1,5 @@
+export const FLIGHT_LIST_ENDPOINT = 'https://api.npoint.io/4829d4ab0e96bfab50e7'
+
 export const AirportList = [
   {
     cityCode: 'DEL',
